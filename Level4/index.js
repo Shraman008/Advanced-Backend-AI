@@ -58,7 +58,7 @@ app.post("/ai", async (req, res) => {
         `
       },
 
-      contents: [
+      contents: [  // contains the message that the user sends to the AI model
         {
           role: "user",
           parts: [{ text: input }]
@@ -83,10 +83,10 @@ const tool = new TavilySearch({
   topic: "general"
 })
 
-const checkPointer = new MemorySaver()
+const checkPointer = new MemorySaver()  // It saves the satte of a conversation so that agent can access previous messages when processing subsequent requests
 
 const tools = [tool]
-const toolNode = new ToolNode(tools)
+const toolNode = new ToolNode(tools)  // built-in LangGraph component
 
 const llm = new ChatGroq({
   model: "openai/gpt-oss-120b",
@@ -118,7 +118,7 @@ const callLLM = async (state) => {
       Be helpful, intelligent, concise and professional. If you don't know the answer to a question then call relevant tools to find the information. Only use tools when requires real time information like weather, news, stock prices, or any other information that is not in your memory. 
       Do not call tools for simple conversation, memory based questions, greetings, or personal context`
     },
-    ...state.messages
+    ...state.messages   // It inserts all existing conversation messages into the array.
   ]);
 
   return { messages: [response] }
@@ -153,7 +153,7 @@ app.post("/ai", async (req, res) => {
         { role: "user", content: input }
       ]
     },
-    { configurable: { thread_id: "user123" } }
+    { configurable: { thread_id: "user123" } }  // Requests using the same thread ID can access its previous state.
   )
 
   console.log(response.messages)
@@ -172,3 +172,7 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
+
+// link to gpt :- https://chatgpt.com/share/6afd538e-f294-83e8-a63f-bf19a1c9aa69
