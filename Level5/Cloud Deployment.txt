@@ -1,0 +1,21 @@
+1. IAM users - in an organizations different employees are allowed to access different services using IAM user option instead of giving the whole aws account to the employees
+
+In aws users can sign in as Root User or IAM User
+
+IAM USER CREATION :-
+a. Search IAM
+b. Under Access Management click on IAM User
+c. Create User
+d. Specify user details -> Set permissions -> Review and Create
+e. Click on the created user
+f. Security credintials -> Enable console access -> Give password -> enable console access -> then send the generated link to the required user
+g. On opening the link give the required username and password
+h. Reset the password
+
+2. EC2 (ELASTIC COMPUTE CLOUD) Service :
+Like we have a local machine, in the same way aws provides a machine in the cloud  which runs 24/7. We can run our full project here.
+
+a. At first push a project to GitHub.
+b. Search EC2.
+c. Under Instances click on Instance.
+d. Launch Instance -> Give name -> Give OS -> Choose free tier -> Create new key-pair -> 
